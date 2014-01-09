@@ -1,0 +1,103 @@
+###############################################################################
+bindkey "^[i"
+bindkey "^[h"
+bindkey "^[j"
+bindkey "^[k"
+bindkey "^[l"
+bindkey "^[y"
+bindkey "^[u"
+bindkey "^[i"
+bindkey "^[o"
+bindkey "^[p"
+bindkey "^[;"
+bindkey "^[a"
+bindkey "^[f"
+bindkey "^[1"
+bindkey "^[2"
+bindkey "^[3"
+bindkey "^[4"
+bindkey "^[5"
+bindkey "^[6"
+bindkey "^[7"
+bindkey "^[8"
+bindkey "^[9"
+#                                                                             #
+bind Q
+bind h
+bind j
+bind k
+bind l
+bind u
+bind i
+bind p
+#
+# All Clear -
+# Lets set up the bind's and bindkey's
+#
+# The next line stops screen 0 from being created
+bind c screen 1
+bind 0 select 10
+#
+# 
+# Ctrl + o :instead of Ctrl + a
+escape ^\\\
+#
+# Ctrl + Space  :instead of Ctrl + a
+#escape ^@@
+#
+# F12 Alternative escape F2 Copy Mode
+bindkey -k kD command
+#
+#        + - - - The Holy Grail - - - +
+#
+#  Alt-u Is now a real PageDown Key in ALL programs
+#  Alt-i Is now a real PageUP key in ALL programs
+#
+bindkey "^[u" stuff -k kN
+bindkey "^[i" stuff -k kP
+#
+#    + - - - - - - - - - - - - - - - - - - +
+#
+# Lets make the layouts useful
+bindkey -k k1 layout select single
+bindkey -k k2 layout select biterm
+bindkey -k k3 layout select triterm
+#
+#bindkey "^[@" other
+bindkey "^[h" focus left
+bindkey "^[j" focus down
+bindkey "^[k" focus up
+bindkey "^[l" focus right
+bindkey "^[y" prev
+#bindkey "^[u" See Holy Grail
+#bindkey "^[i" See Holy Grail
+bindkey "^[o" next
+bindkey "^[p" paste .
+bindkey "^[;" other
+bindkey "^[a" resize -4
+bindkey "^[f" resize +4
+bindkey "^[1" select 1
+bindkey "^[2" select 2
+bindkey "^[3" select 3
+bindkey "^[4" select 4
+bindkey "^[5" select 5
+bindkey "^[6" select 6
+bindkey "^[7" select 7
+bindkey "^[8" select 8
+bindkey "^[9" select 9
+#
+bind Q quit
+bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right
+bind u prev
+bind i next
+bind p paste .
+# No binding to , .
+# <escape>. outputs Termcap
+# <escape>[ is already copy
+#
+###############################################################################
+
+#  vim: set ts=2 sw=2 tw=80 et :

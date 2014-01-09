@@ -1,0 +1,159 @@
+###############################################################################
+#                                                                             #
+# Lets configure the caption and hardstatus                                   #
+#
+# Get rid of the Vertical divider/border
+rendition so "="
+#
+# With earlier (even <= 4.00) or non-devel versions you might need to use
+#sorendition "="
+#
+#
+#  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  #
+#                                                                             #
+# With this not on, screen still seems to work fine.
+# I think these are being set somewhere ellse.
+# I now some are set or the hp700 in screen-termsgit
+#
+# Don't poke the bare !
+#
+# Screen will only belave we have a hard status line if
+# hs ts fs and ds are all set
+#
+#termcapinfo rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
+#                                                                             #
+#  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  #
+#
+#
+# To get screen to add lines to xterm's scrollback buffer, uncomment the
+# following termcapinfo line which tells xterm to use the normal screen buffer
+# (which has scrollback), not the alternate screen buffer.
+#
+#termcapinfo xterm-256color|xterm|xterms|xs|rxvt ti@:te@
+#  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  #
+#             + backtick id lifespan autorefresh cmd args... +                #
+#                                                                             #
+# The backtick program runs command, last line of output saved to: %id        #
+# lifespan(sec) If expired cmd will be run again next time %id is evaluated   #
+# autorefresh(sec) If expired rerun cmd and refresh caption and hardstatus    #
+#                                                                             #
+#                                + Example +                                  #
+#                                                                             #
+# backtick 5 3 4 echo "Line 1\nLine 2\nLine 3"                                #
+# caption string "%5"                                                         #
+# Every, 4 seconds but no less then 3 seconds                                 #
+#    The echo command will be run and only "Line 3" will be stored in: %5     #
+# Every, 4 seconds the caption and hardstatus lines will be refreshed so they #
+#    will display the new value of: %5                                        #
+# NOTE: Screen stops/locks until comand finishes                              #
+#
+#backtick 1 0 0 hostname -i
+#backtick 2 5 5 capslock-status
+#backtick 2 300 300 echo-gateway
+#backtick 1 60 60 echo-remote
+backtick 1 60 60 echo-audit
+#                                                                             #
+#  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  #
+#
+#  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  #
+#                                                                             #
+# some notes on COLOR before explaining its use in
+# the commands caption, hardstatus, and sorendition.
+#
+# COLOR:  colors codes are combinations of
+# [attribute modifier] [color description]
+# the manual talks of "attribute/color modifiers".
+# see the manual, section "STRING ESCAPES".
+#
+# Color table:
+# 0 Black             .    leave color unchanged
+# 1 Red               b    blue
+# 2 Green             c    cyan
+# 3 Brown / yellow    d    default color
+# 4 Blue              g    green           b    bold
+# 5 Purple            k    blacK           B    blinking
+# 6 Cyan              m    magenta         d    dim
+# 7 White             r    red             r    reverse
+# 8 unused/illegal    w    white           s    standout
+# 9 transparent       y    yellow          u    underline
+#
+# note: "dim" is not mentioned in the manual.
+#                                                                             #
+#  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  #
+#
+#  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  #
+#                                                                             #
+# There are two kinds of messages:  "activity" and "bell"
+# They are also the names of the commands that set the
+# respective messages.  In every message there can be "meta
+# strings" which are replaced by values.  A meta string starts
+# with a percent sign and is then followed by one
+# of the following letters: aAcCdDfFhHlmMnstuwWyY
+# The meta strings usually refer to the current
+# date and time or to a window title or number.
+# There are also some specials like embedded branches (with %?),
+# color codes (with %{xy}) and padding (with %=, %<, %>).
+# you can find their description in the manual in section
+# "STRING ESCAPES":
+#  %%      percent sign (the escape character itself)
+#  %a      either 'am' or 'pm' - according to the current time
+#  %A      either 'AM' or 'PM' - according to the current time
+#  %c      current time HH:MM in 24h format
+#  %C      current time HH:MM in 12h format
+#  %d      day number - number of current day
+#  %D      Day's name - the weekday name of the current day
+#  %f      flags of the window
+#  %F      sets %? to true if the window has the focus
+#  %h      hardstatus of the window
+#  %H      hostname of the system
+#  %l      current load of the system
+#  %m      month number
+#  %M      month name
+#  %n      window number
+#  %s      seconds
+#  %t      window title
+#  %u      all other users on this window
+#  %w      all window numbers and names.
+#  %-w     all window numbers up to the current window
+#  %+w     all window numbers after the current window
+#  %W      all window numbers and names except the current one
+#  %y      last two digits of the year number
+#  %Y      full year number
+#
+# %? Start Conditional- %F=True If current screen-  %: Else- %? End Conditonal
+#                                                                             #
+#  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  +  #
+#
+#
+caption splitonly
+#caption string '%?%F%{= kc}%:%{= ky}%?%1=%-w%?%F%{= kG}%:%{= kY}%?%n %{-}%{= kw}%t%{-}%+w'
+# This is for use when the hardstatus line is used
+#caption string '%?%F%{= .y}%:%{= .k}%?:. %= . :%{-} %?%F%{= .G}%:%{= .k}%?+%{-} %?%F%{= .y}%:%{= .k}%?: . %{-} %=  %?%F%{= BW}%:%{= Kw}%? %n%f %t %{-} %= %?%F%{= .y}%:%{= .k}%? . :%{-} %?%F%{= .G}%:%{= .k}%?+%{-} %?%F%{= .y}%:%{= .k}%?: . %= .:%{-}'
+#
+# Note: was %{= BW}
+caption string '%= %?%F%{= dw}%:%{= dK}%?%?%P%{g}%?%?%F<%{= K.}%?<%?%F%{= wK}%:%{= Kw}%?%?%P%{= gW}%? %n%f %t %?%F%{= dw}%:%{= dK}%?%?%P%{g}%?%?%F%{= K.}>%{-}%?>%{= dd} %= '
+#
+#
+hardstatus on
+# This is like setting the Messages on/off. read man page
+#hardstatus off
+hardstatus alwayslastline
+# This is what disables the hardstatus line
+#hardstatus ignore
+#hardstatus string '%{= wK} %H %{-}%{= Kw}> %l %{-}%{= .K}>%{-} %t %= %{= .K}<%{-}%{= Kw} %-Lw%{-}%{= Kr}<%{-}%{= rW} %n%f %t %{-}%{= Kr}>%{-}%{= Kw}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= Kw} %M`%d <%{-}%{= wK} %C %a %{-}'
+#
+# Blue active window caption
+#hardstatus string '%?%E%{= rW}%:%{= wK}%? %H %{-}%?%E%{= Kr}%:%{= Kw}%?>%{-}%{= K.} %l %{= dK}>%{= dd} %1` %= %{= .K}<%{-}%{= K.} %-Lw%{-}%{= Kw}<%{-}%{= wK} %n%f %t %{-}%{= Kw}>%{-}%{= K.}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= K.} %M`%d %{w}<%{= wK} %C %a %{= dd}'
+#
+#
+hardstatus string '%?%E%{= rW}%:%{= wK}%? %H %{-}%?%E%{= Kr}%:%{= Kw}%?>%{-}%{= K.} %l %{= dK}>%{= dd} %1` %= %{= .K}<%{-}%{= K.} %-Lw%{-}%{= Kw}<%{-}%{= wK} %n%f %t %{-}%{= Kw}>%{-}%{= K.}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= K.} %M`%d %{w}<%{= wK} %C %a %{= dd}'
+#
+# Instead of displaying the hardstatus in screen send it to the WM's title bar#
+#hardstatus off
+#hardstatus string '%H %n (%t)'
+#termcapinfo  * '' 'hs:ts=\E_:fs=\E\\:ds=\E_\E\\'
+#termcapinfo xterm*|linux* 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+#                                                                             #
+###############################################################################
+
+#  vim: set ts=2 sw=2 tw=80 et :

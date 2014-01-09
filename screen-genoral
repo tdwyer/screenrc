@@ -1,0 +1,28 @@
+###############################################################################
+#                                                                             #
+# Set dome defult stuff
+# 
+# Set the title of the window to the name of the last command run
+#shelltitle '>>> |zsh'
+#
+#
+defscrollback 20000
+startup_message off
+#vbell on
+vbell off
+#vbell_msg off
+vbell_msg "- Bell -"
+altscreen on
+# Auto detach on Hangup i.e. lost ssh
+autodetach on
+# If a window goes unresponsive, don't block the whole session waiting for it.
+nonblock on
+# UTF8 default
+defutf8 on
+#
+# Disable freezing screen
+bind s
+#                                                                             #
+###############################################################################
+
+#  vim: set ts=2 sw=2 tw=80 et :

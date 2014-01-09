@@ -1,0 +1,46 @@
+###############################################################################
+#                                                                             #
+# Lets configure stuff dealing with the color
+#
+# Allow bold colors - necessary for some reason
+attrcolor b ".I"
+attrcolor i "+b"
+#
+# Tell screen how to set colors. AB = background, AF=foreground
+# BUT, I don't really think this line dose anything. Im using xterm-256color
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# For rxvt-unicode terminal
+terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+#
+# It's a reall mess betwen, term vs. screen vs. vim
+# but it's working for me to just set 256colo in zprofile: TERM='xterm-256color'
+# bce fracks things up keep it off
+#
+# Put this in your zprofile
+# TERM='xterm=256color'
+#
+# "Put the following in vimrc
+#
+# if &term =~ '256color'
+#   set t_Co=256
+#   " disable Background Color Erase (BCE) so that color schemes
+#   " render properly when inside 256-color tmux and GNU screen.
+#   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+#   set t_ut=
+# endif
+# colo jellybeans
+#
+# Disable bce
+# Don't bother setting term. ~/.zprofile overrides it with: xterm-256color
+#
+#term xterm
+#term xterm-256color
+term screen-256color
+#term screen-256color-bce
+defbce off
+#defbce on
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+#  vim: set ts=2 sw=2 tw=80 et :

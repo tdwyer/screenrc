@@ -1,0 +1,17 @@
+###############################################################################
+#                                                                             #
+# Tell vt100 about Fn keys                                                    #
+termcap  vt100* ms:AL=\E[%dL:DL=\E[%dM:UP=\E[%dA:DO=\E[%dB:LE=\E[%dD:RI=\E[%dC
+terminfo vt100* ms:AL=\E[%p1%dL:DL=\E[%p1%dM:UP=\E[%p1%dA:DO=\E[%p1%dB:LE=\E[%p1%dD:RI=\E[%p1%dC
+termcapinfo linux C
+# Set these terminals up to be 'optimal' instead of vt100
+termcapinfo xterm*|linux* OP
+#
+# man screenrc
+# Note that you can  use  the  special OL terminal capability if you want to
+# have a dependency on the terminal type
+termcapinfo xterm*|linux* OL=20000
+#                                                                             #
+###############################################################################
+
+#  vim: set ts=2 sw=2 tw=80 et :

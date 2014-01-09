@@ -1,0 +1,57 @@
+###############################################################################
+#                                                                             #
+# + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - #
+#                               +  Layouts  +                                 #
+# + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - #
+#                                                                             #
+layout autosave on                                                            #
+#                                                                             #
+# -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -#
+#   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   + #
+#                                                                             #
+# Shell Creation Order Determines Number and The Screen Sets Starting Columns #
+# --------------------------------------------------------------------------- #
+#                                                                             #
+#   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   + #
+# -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -#
+#                                                                             *
+# Single
+layout new single
+screen 1
+select 1
+shell zsh
+layout save
+#
+# BiTerm
+layout new biterm
+split -v
+select 1
+focus right
+screen 2
+select 2
+shell zsh
+focus left
+layout save
+#
+# TriTerm
+layout new triterm
+split -v
+split
+select 1
+focus down
+select 2
+focus right
+screen 3
+select 3
+shell zsh
+layout save
+#
+#
+# Default selection is Single for compatibility
+#
+layout select single
+#                                                                             *
+# + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - #
+#                                                                             #
+###############################################################################
+

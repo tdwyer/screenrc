@@ -1,0 +1,7 @@
+source /etc/screen/screen-color
+source /etc/screen/screen-vt100
+source /etc/screen/screen-genoral
+source /etc/screen/screen-statuslines
+source /etc/screen/screen-termsgit
+source /etc/screen/screen-bindings
+source /etc/screen/screen-layouts
