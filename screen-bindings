@@ -1,15 +1,19 @@
 ###############################################################################
+#
+# Wipe out native keybindings
+# .. or attempt to
+#
+bindkey "^[y"
 bindkey "^[i"
+bindkey "^[u"
+bindkey "^[o"
+bindkey "^[p"
 bindkey "^[h"
 bindkey "^[j"
 bindkey "^[k"
 bindkey "^[l"
-bindkey "^[y"
-bindkey "^[u"
-bindkey "^[i"
-bindkey "^[o"
-bindkey "^[p"
 bindkey "^[;"
+bindkey "^[n"
 bindkey "^[a"
 bindkey "^[f"
 bindkey "^[1"
@@ -21,6 +25,30 @@ bindkey "^[6"
 bindkey "^[7"
 bindkey "^[8"
 bindkey "^[9"
+#
+# Ctrl
+bindkey "^Y"
+bindkey "^U"
+bindkey "^I"
+bindkey "^O"
+bindkey "^H"
+bindkey "^J"
+bindkey "^K"
+bindkey "^L"
+bindkey "^;"
+bindkey "^B"
+bindkey "^N"
+bindkey "^A"
+bindkey "^F"
+bindkey "^1"
+bindkey "^2"
+bindkey "^3"
+bindkey "^4"
+bindkey "^5"
+bindkey "^6"
+bindkey "^7"
+bindkey "^8"
+bindkey "^9"
 #                                                                             #
 bind Q
 bind h
@@ -38,7 +66,7 @@ bind p
 bind c screen 1
 bind 0 select 10
 #
-# 
+#
 # Ctrl + o :instead of Ctrl + a
 escape ^\\\
 #
@@ -48,55 +76,80 @@ escape ^\\\
 # F12 Alternative escape F2 Copy Mode
 bindkey -k kD command
 #
-#        + - - - The Holy Grail - - - +
+#           + - - - The Holy Grail - - - +
+#              Global Vim Movement Keys
+#   Function in all apps, including Vim Insert Mode
 #
-#  Alt-u Is now a real PageDown Key in ALL programs
-#  Alt-i Is now a real PageUP key in ALL programs
+#  Alt-y Is a Home Key
+#  Alt-u Is a PgUp Key
+#  Alt-i Is a PgDown Key
+#  Alt-o Is a  End key
+#  Alt-h,j,k,l Are Cursor Left,Up,Down,Right
 #
+#
+bindkey "^[y" stuff -k kh
 bindkey "^[u" stuff -k kN
 bindkey "^[i" stuff -k kP
+bindkey "^[o" stuff -k kH
+bindkey "^[h" stuff -k kl
+bindkey "^[j" stuff -k kd
+bindkey "^[k" stuff -k ku
+bindkey "^[l" stuff -k kr
 #
-#    + - - - - - - - - - - - - - - - - - - +
+#            + - - - Layout Keys - - - +
 #
-# Lets make the layouts useful
 bindkey -k k1 layout select single
 bindkey -k k2 layout select biterm
 bindkey -k k3 layout select triterm
 #
-#bindkey "^[@" other
-bindkey "^[h" focus left
-bindkey "^[j" focus down
-bindkey "^[k" focus up
-bindkey "^[l" focus right
-bindkey "^[y" prev
-#bindkey "^[u" See Holy Grail
-#bindkey "^[i" See Holy Grail
-bindkey "^[o" next
-bindkey "^[p" paste .
-bindkey "^[;" other
-bindkey "^[a" resize -4
-bindkey "^[f" resize +4
-bindkey "^[1" select 1
-bindkey "^[2" select 2
-bindkey "^[3" select 3
-bindkey "^[4" select 4
-bindkey "^[5" select 5
-bindkey "^[6" select 6
-bindkey "^[7" select 7
-bindkey "^[8" select 8
-bindkey "^[9" select 9
+# Ctrl
+#
+bindkey "^H" focus left
+bindkey "^J" focus down
+bindkey "^K" focus up
+bindkey "^L" focus right
+bindkey "^Y" meta
+bindkey "^O" copy
+bindkey "^P" paste .
+bindkey "^B" prev
+bindkey "^N" next
+bindkey "^A" resize -4
+bindkey "^F" resize +4
+bindkey "^1" select 1
+bindkey "^2" select 2
+bindkey "^3" select 3
+bindkey "^4" select 4
+bindkey "^5" select 5
+bindkey "^6" select 6
+bindkey "^7" select 7
+bindkey "^8" select 8
+bindkey "^9" select 9
+#
+# 
 #
 bind Q quit
+#
+bind 
 bind h focus left
 bind j focus down
 bind k focus up
 bind l focus right
-bind u prev
-bind i next
+bind y meta
+bind o copy
 bind p paste .
-# No binding to , .
-# <escape>. outputs Termcap
-# <escape>[ is already copy
+bind b prev
+bind n next
+bind a resize -4
+bind f resize +4
+bind 1 select 1
+bind 2 select 2
+bind 3 select 3
+bind 4 select 4
+bind 5 select 5
+bind 6 select 6
+bind 7 select 7
+bind 8 select 8
+bind 9 select 9
 #
 ###############################################################################
 

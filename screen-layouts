@@ -6,20 +6,12 @@
 #                                                                             #
 layout autosave on                                                            #
 #                                                                             #
-# -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -#
-#   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   + #
-#                                                                             #
-# Shell Creation Order Determines Number and The Screen Sets Starting Columns #
-# --------------------------------------------------------------------------- #
-#                                                                             #
-#   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   +   + #
-# -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -#
 #                                                                             *
 # Single
 layout new single
 screen 1
 select 1
-shell zsh
+shell
 layout save
 #
 # BiTerm
@@ -29,7 +21,7 @@ select 1
 focus right
 screen 2
 select 2
-shell zsh
+shell
 focus left
 layout save
 #
@@ -43,7 +35,7 @@ select 2
 focus right
 screen 3
 select 3
-shell zsh
+shell
 layout save
 #
 #
@@ -51,7 +43,6 @@ layout save
 #
 layout select single
 #                                                                             *
-# + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - #
 #                                                                             #
 ###############################################################################
 

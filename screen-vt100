@@ -8,7 +8,7 @@ termcapinfo linux C
 termcapinfo xterm*|linux* OP
 #
 # man screenrc
-# Note that you can  use  the  special OL terminal capability if you want to
+# Note that you can use the special OL terminal capability if you want to
 # have a dependency on the terminal type
 termcapinfo xterm*|linux* OL=20000
 #                                                                             #

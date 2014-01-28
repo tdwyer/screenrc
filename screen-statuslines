@@ -48,10 +48,11 @@ rendition so "="
 # NOTE: Screen stops/locks until comand finishes                              #
 #
 #backtick 1 0 0 hostname -i
+backtick 1 0 0 hostname -d
+backtick 2 0 0 uname -r
 #backtick 2 5 5 capslock-status
 #backtick 2 300 300 echo-gateway
-#backtick 1 60 60 echo-remote
-backtick 1 60 60 echo-audit
+#backtick 1 60 60 echo-audit
 #                                                                             #
 #  -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -   -  #
 #
@@ -76,6 +77,8 @@ backtick 1 60 60 echo-audit
 # 7 White             r    red             r    reverse
 # 8 unused/illegal    w    white           s    standout
 # 9 transparent       y    yellow          u    underline
+#
+# ${-} Undo last change
 #
 # note: "dim" is not mentioned in the manual.
 #                                                                             #
@@ -104,6 +107,7 @@ backtick 1 60 60 echo-audit
 #  %D      Day's name - the weekday name of the current day
 #  %f      flags of the window
 #  %F      sets %? to true if the window has the focus
+#  %P      sets $? to true if the window is in Copy mode
 #  %h      hardstatus of the window
 #  %H      hostname of the system
 #  %l      current load of the system
@@ -126,27 +130,18 @@ backtick 1 60 60 echo-audit
 #
 #
 caption splitonly
-#caption string '%?%F%{= kc}%:%{= ky}%?%1=%-w%?%F%{= kG}%:%{= kY}%?%n %{-}%{= kw}%t%{-}%+w'
-# This is for use when the hardstatus line is used
-#caption string '%?%F%{= .y}%:%{= .k}%?:. %= . :%{-} %?%F%{= .G}%:%{= .k}%?+%{-} %?%F%{= .y}%:%{= .k}%?: . %{-} %=  %?%F%{= BW}%:%{= Kw}%? %n%f %t %{-} %= %?%F%{= .y}%:%{= .k}%? . :%{-} %?%F%{= .G}%:%{= .k}%?+%{-} %?%F%{= .y}%:%{= .k}%?: . %= .:%{-}'
 #
 # Note: was %{= BW}
 caption string '%= %?%F%{= dw}%:%{= dK}%?%?%P%{g}%?%?%F<%{= K.}%?<%?%F%{= wK}%:%{= Kw}%?%?%P%{= gW}%? %n%f %t %?%F%{= dw}%:%{= dK}%?%?%P%{g}%?%?%F%{= K.}>%{-}%?>%{= dd} %= '
 #
-#
-hardstatus on
 # This is like setting the Messages on/off. read man page
+hardstatus on
 #hardstatus off
-hardstatus alwayslastline
 # This is what disables the hardstatus line
+hardstatus alwayslastline
 #hardstatus ignore
-#hardstatus string '%{= wK} %H %{-}%{= Kw}> %l %{-}%{= .K}>%{-} %t %= %{= .K}<%{-}%{= Kw} %-Lw%{-}%{= Kr}<%{-}%{= rW} %n%f %t %{-}%{= Kr}>%{-}%{= Kw}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= Kw} %M`%d <%{-}%{= wK} %C %a %{-}'
 #
-# Blue active window caption
-#hardstatus string '%?%E%{= rW}%:%{= wK}%? %H %{-}%?%E%{= Kr}%:%{= Kw}%?>%{-}%{= K.} %l %{= dK}>%{= dd} %1` %= %{= .K}<%{-}%{= K.} %-Lw%{-}%{= Kw}<%{-}%{= wK} %n%f %t %{-}%{= Kw}>%{-}%{= K.}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= K.} %M`%d %{w}<%{= wK} %C %a %{= dd}'
-#
-#
-hardstatus string '%?%E%{= rW}%:%{= wK}%? %H %{-}%?%E%{= Kr}%:%{= Kw}%?>%{-}%{= K.} %l %{= dK}>%{= dd} %1` %= %{= .K}<%{-}%{= K.} %-Lw%{-}%{= Kw}<%{-}%{= wK} %n%f %t %{-}%{= Kw}>%{-}%{= K.}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= K.} %M`%d %{w}<%{= wK} %C %a %{= dd}'
+hardstatus string '%?%E%{= rW}%:%{= wK}%? %H %{-}%?%E%{= Kr}%:%{= Kw}%?>%{-}%{= K.} %1` %{= dK}>%{= dd} %2` %= %{= .K}<%{-}%{= K.} %-Lw%{-}%{= Kw}<%{-}%{= wK} %n%f %t %{-}%{= Kw}>%{-}%{= K.}%+Lw %{-}%{= .K}>%{-} %= %D %{= .K}<%{-}%{= K.} %M`%d %{w}<%{= wK} %C %a %{= dd}'
 #
 # Instead of displaying the hardstatus in screen send it to the WM's title bar#
 #hardstatus off

@@ -1,6 +1,7 @@
 ###############################################################################
 #                                                                             #
-# This was the term stuff in the default config                               #
+# This was the term stuff in the default config provided by screen-git        #
+#
 #
 # Diff Patch said to add these to the top of /etc/screenrc
 termcapinfo xterm* G0:is=\E[?4l\E>:ti@:te@

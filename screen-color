@@ -7,17 +7,16 @@ attrcolor b ".I"
 attrcolor i "+b"
 #
 # Tell screen how to set colors. AB = background, AF=foreground
-# BUT, I don't really think this line dose anything. Im using xterm-256color
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # For rxvt-unicode terminal
 terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 #
-# It's a reall mess betwen, term vs. screen vs. vim
-# but it's working for me to just set 256colo in zprofile: TERM='xterm-256color'
+# term vs. screen vs. vim ... what a pain
 # bce fracks things up keep it off
-#
-# Put this in your zprofile
-# TERM='xterm=256color'
+defbce off
+#defbce on
+term screen-256color
+#term screen-256color-bce
 #
 # "Put the following in vimrc
 #
@@ -30,16 +29,6 @@ terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 # endif
 # colo jellybeans
 #
-# Disable bce
-# Don't bother setting term. ~/.zprofile overrides it with: xterm-256color
-#
-#term xterm
-#term xterm-256color
-term screen-256color
-#term screen-256color-bce
-defbce off
-#defbce on
-#                                                                             #
 #                                                                             #
 ###############################################################################
 
